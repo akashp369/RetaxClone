@@ -11,7 +11,13 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
+<<<<<<< HEAD
+    "framer-motion": "^10.12.14",
+    "json": "^11.0.0",
+    "json-server": "^0.17.3",
+=======
     "framer-motion": "^10.12.16",
+>>>>>>> 53f15c2da5870c42f299d2fd8e340f262b9c88df
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
@@ -24,6 +30,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "server": "npm run server",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
