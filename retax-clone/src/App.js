@@ -4,9 +4,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Retax E- Commerce Clone</h1>
-    
+    <div className="App"> 
     </div>
   );
 }
