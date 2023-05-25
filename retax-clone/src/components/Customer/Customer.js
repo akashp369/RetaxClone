@@ -1,25 +1,33 @@
 import React from "react"
+import { Box, InputGroup, Input, InputRightElement } from '@chakra-ui/react'
 
-const Customer=()=>{
+export const Customer=()=>{
 
-    return <div>
-        <div></div>
-        <div>
-            <div>
-                <div><h1>Customers</h1></div>
+    return <Box>
+        <Box></Box>
+        <Box>
+            <Box>
+                <Box p={4} fontSize='xl' textAlign={[ 'left']} fontWeight="bold"> Customers</Box>
 
-                <div>
-                    <div>serach bpc and some paraMeter</div>
-                    <div>sorting</div>
-                </div>
-            </div>
+                <Box>
+                    <Box>
+                        {/* serach box and some paraMeter */}
+                        <InputGroup>
+                            <Input placeholder="Search" />
+                            <InputRightElement>
+                            </InputRightElement>
+                        </InputGroup>
+                        </Box>
+                    <Box>sorting</Box>
+                </Box>
+            </Box>
 
-            <div>
+            <Box>
 
 
-                
-            </div>
 
-        </div>
-    </div>
+            </Box>
+
+        </Box>
+    </Box>
 }
