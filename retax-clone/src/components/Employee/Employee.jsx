@@ -1,7 +1,30 @@
 import React from "react"
+import axios from 'axios';
+import { useEffect } from "react";
 
  function Employee () {
 
+{ /*    <Route exact path="/" component={EmployeeData} />
+<Route path="/employee/:id" component={EmployeeDetails} />
+  Add this to Route */}
+
+
+
+    useEffect(() => {
+                axios.get('')
+            .then(response => {
+              
+                console.log(response.employeeData);
+            })
+            .catch(error => {
+             
+                console.error(error);
+            });
+    })
+
+    const redirectToEmployeeDetails = (employeeId) => {
+
+    }
 
     return(
 
@@ -40,7 +63,7 @@ import React from "react"
                                 </tbody>
                                 {/* <tbody>
                                 {employees.map((employee) => (
-                                    <div>
+                                    <div  onClick={() => redirectToEmployeeDetails(employee.id)}>
 
                                         <tr key={employee.id}>
                                         <td>{employee.id}</td>
