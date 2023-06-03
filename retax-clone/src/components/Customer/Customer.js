@@ -5,7 +5,7 @@ Select,
 Table, Thead, Tbody, Tr, Td,
 Avatar,
 Checkbox,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
 import {SearchIcon, } from '@chakra-ui/icons';
 import axios from "axios";
 
@@ -166,7 +166,7 @@ export const Customer=()=>{
                 <Tbody>
                     {
                         visibleData.map((elem,index)=>{
-                            return <Tr key={index} style={{fontSize:"15px"}}>
+                            return <Tr key={index} style={{fontSize:"8px"}}>
                                     <Td> <Checkbox
                                     onChange={() => handleCheckboxChange(elem.id)}
                                     // isChecked={selectedIds.includes(elem.id)}

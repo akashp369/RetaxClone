@@ -1,6 +1,13 @@
 import { Customer } from "./components/Customer/Customer";
 import './App.css';
+import {useState} from "react"
 import Employee from './components/Employee/Employee';
+import AllRoutes from "./AllRoutes/AllRoutes";
+import Sidebar from "./Pages/Sidebar";
+import SideContect from "./components/Home/SideContect";
+import { 
+  Flex,Box
+  } from '@chakra-ui/react';
 
 function App() {
   const [toggel, setToggle]=useState(false)
