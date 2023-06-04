@@ -1,7 +1,6 @@
 import './App.css';
 import {useState} from "react"
 import AllRoutes from "./AllRoutes/AllRoutes";
-import { useState } from "react";
 import Side from './Side'
 import { Route, Routes } from "react-router-dom";
 import Main from "./components/Login/Main";
