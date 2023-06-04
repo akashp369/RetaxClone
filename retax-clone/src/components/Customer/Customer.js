@@ -8,6 +8,9 @@ Checkbox,
 } from '@chakra-ui/react';
 import {SearchIcon, } from '@chakra-ui/icons';
 import axios from "axios";
+import "./customer.css"
+
+import CustomerModal from "./customerModel";
 
 export const Customer=()=>{
 
@@ -15,6 +18,9 @@ export const Customer=()=>{
     const [searchQuery, setSearchQuery] = useState("");
     const [sortBy, setSortBy] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
+
+    const [showModal, setShowModal] = useState(false);
+    const [selectedCustomer, setSelectedCustomer] = useState(null);
 
     
     useEffect(() => {
@@ -151,22 +157,22 @@ export const Customer=()=>{
             <Box marginTop="40px">
             <Table variant="simple">
                 <Thead backgroundColor="rgb(211, 211, 211)">
-                    <Tr>
-                        <Td> <Checkbox /> </Td>
-                        <Td>Customer Names</Td>
-                        <Td>ID</Td>
-                        <Td>Case Status</Td>
-                        <Td>Family Status</Td>
-                        <Td>Phone Number</Td>
-                        <Td>Email</Td>
-                        <Td>Age</Td>
-                        <Td></Td>
+                    <Tr className="my-table">
+                        <Td > <Checkbox /> </Td>
+                        <Td >Customer Names</Td>
+                        <Td >ID</Td>
+                        <Td > Case Status</Td>
+                        <Td >Family Status</Td>
+                        <Td >Phone Number</Td>
+                        <Td >Email</Td>
+                        <Td >Age</Td>
+                        <Td ></Td>
                     </Tr>
                 </Thead>
                 <Tbody>
                     {
                         visibleData.map((elem,index)=>{
-                            return <Tr key={index} style={{fontSize:"8px"}}>
+                            return <Tr key={index} style={{fontSize:"13px"}} className="my-table">
                                     <Td> <Checkbox
                                     onChange={() => handleCheckboxChange(elem.id)}
                                     // isChecked={selectedIds.includes(elem.id)}
@@ -222,17 +228,22 @@ export const Customer=()=>{
                                         <Tr style={{height: "10px"}}/>
                                         <Tr>{elem.age+" -"}  ({calculateAge(elem.age)+" years"}) </Tr>
                                     </Td>
-                                    <Td><Button>...</Button></Td>
+                                    <Td><Button
+                                    onClick={() => {
+                                        setSelectedCustomer(elem);
+                                        setShowModal(true);
+                                      }}
+                                      >...</Button></Td>
                                 </Tr>
                         })
                     }
                 </Tbody>
             </Table>
             </Box>
-                
+            <CustomerModal isOpen={showModal} onClose={() => setShowModal(false)} customer={selectedCustomer} />
         </Box>
         <Box style={{display:"flex"}}>
-            <Box width="80%" textAlign="left">
+            <Box width="80%" textAlign="left" margin="5px">
                 {/* delete op */}
                 <Button onClick={()=>{
                     handleDelete(selectedIds);
@@ -265,6 +276,7 @@ export const Customer=()=>{
                     >
                         {">"}
                     </Button>
+
                     </Box>
             </Box>
         </Box>
