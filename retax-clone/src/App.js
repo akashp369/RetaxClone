@@ -1,14 +1,15 @@
-import { Customer } from "./components/Customer/Customer";
 import './App.css';
-import Sidebar from "./Pages/Sidebar";
-import { Box, Flex, Grid } from "@chakra-ui/react";
-import SideContect from "./components/Home/SideContect";
+import {useState} from "react"
 import AllRoutes from "./AllRoutes/AllRoutes";
 import { useState } from "react";
 import Side from './Side'
 import { Route, Routes } from "react-router-dom";
-import Login from "./components/Login/Login";
 import Main from "./components/Login/Main";
+import Sidebar from "./Pages/Sidebar";
+import SideContect from "./components/Home/SideContect";
+import { 
+  Flex,Box
+  } from '@chakra-ui/react';
 
 function App() {
   const [toggel, setToggle]=useState(false)
