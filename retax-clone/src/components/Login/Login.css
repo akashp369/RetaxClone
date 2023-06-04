@@ -1,0 +1,21 @@
+.login-container{
+    background-image: linear-gradient(
+        to bottom,
+        white 0%,
+        white 50%,
+        #722ed1 50%,
+        #722ed1 100%
+    );
+    padding-bottom: 45px;
+}
+
+.signup-container{
+    background-image: linear-gradient(
+        to bottom,
+        white 0%,
+        white 50%,
+        #722ed1 50%,
+        #722ed1 100%
+    );
+    padding-bottom: 30px;
+}
