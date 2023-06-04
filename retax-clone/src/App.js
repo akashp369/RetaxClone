@@ -1,8 +1,9 @@
-import { Customer } from "./components/Customer/Customer";
 import './App.css';
 import {useState} from "react"
-import Employee from './components/Employee/Employee';
 import AllRoutes from "./AllRoutes/AllRoutes";
+import Side from './Side'
+import { Route, Routes } from "react-router-dom";
+import Main from "./components/Login/Main";
 import Sidebar from "./Pages/Sidebar";
 import SideContect from "./components/Home/SideContect";
 import { 
@@ -14,20 +15,31 @@ function App() {
   const onChange=()=>{
     setToggle(!toggel)
   }
-  return (
-    <div className="App">
+  const[isLogin, setIsLogin]=useState(false);
+  const update_login=()=>{
+    setIsLogin(!isLogin)
+  }
+  if(isLogin==true){
+    return (
+      <div className="App">
       <Flex>
       <Box w={"20%"} display={toggel?"none":'block'} >
-        <Sidebar  />
+        <Sidebar  update_login={update_login}/>
       </Box>
-      <Box w={!toggel?"80%":"100%"}  ml={0}    >
-        <SideContect onChange={onChange} toggle={toggel}/>
-        <AllRoutes  toggle={toggel}/>
+      <Box w={!toggel?"82.7%":"100%"}  ml={"0px"}  >
+        <SideContect onChange={onChange} toggle={toggel} update_login={update_login}/>
+        <AllRoutes  toggle={toggel} isLogin={isLogin} update_login={update_login}/>
       </Box>
     </Flex>
-    {/* <Side /> */}
     </div>
   );
+   
+  }
+    return(
+      <Routes>
+        <Route path="/" element={<Main update_login={update_login}  />}/>
+      </Routes>
+    )
 }
 
 export default App;
