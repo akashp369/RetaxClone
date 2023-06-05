@@ -22,11 +22,14 @@ import dataa from "../../Employee.json";
         const sortedList  = employeeData.filter((employee) => employee.status === status);
         setEmployeeData(sortedList);
         // console.log(event.target.value)
+
     };
+
+   
 
     return(
 
-        <div >
+        <div style={{margin:'10px' , padding:'10px'}}>
            <Flex style={{margin:'30px'}}>
 
                 <Heading>Employees</Heading>
@@ -58,7 +61,7 @@ import dataa from "../../Employee.json";
                                     placeholder='Select option' size='sm' variant='filled'
                                     style={{width : "200px", }} 
                                     onChange={ handleSort}>
-
+                           
                             <option value='Active'>Active</option>
                             <option value='Inactive'>Inactive</option>
                         </Select>
