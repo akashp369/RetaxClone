@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Heading } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import dataa from "../../db.json";
+import dataa from "../../Employee.json";
 import {useState} from 'react';
 import { Link} from "react-router-dom";
 

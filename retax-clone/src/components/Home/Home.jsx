@@ -3,9 +3,14 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import "./Home.css"
 import { Box, Button, Flex, Grid, GridItem, Heading, Icon, Select, useColorModeValue, useDisclosure } from '@chakra-ui/react'
 import { BsThreeDots } from "react-icons/bs";
+import Graph from './Graph';
+import { useNavigate } from 'react-router-dom';
 
-export default function Home({update_login}) {
-    
+export default function Home({update_login, isLogin}) {
+  const navigate=useNavigate();
+  if(isLogin==false){
+    navigate('/');
+  }
   return (
     <Box >
       <Flex
@@ -63,13 +68,13 @@ export default function Home({update_login}) {
         </Box> 
         
         </Box>
-        <Grid templateColumns={'2fr 1fr'}>
+        <Grid templateColumns={'2fr 1.3fr'}>
           <Box borderWidth="1px" 
         borderBottomColor={useColorModeValue('gray.200', 'gray.700')}>
           <Flex mt={"10px"}
             ml={{ base: 0, md: 0 }} pt={"10px"}
             px={{ base: 4, md: 4 }} justifyContent={"space-between"}>
-              <Box><Heading size={"sm"}>Key Indicators</Heading></Box>
+              <Box><Heading size={"sm"}>Cases</Heading></Box>
               <Box>
               <select placeholder='All time' className='select_option' >
               <option value='option1'> All time</option>
@@ -80,7 +85,10 @@ export default function Home({update_login}) {
             <Icon as={BsThreeDots} />
               </Box>
           </Flex>
-          
+          <Box  
+            px={{ base: 4, md: 4 }}>
+            <Graph />
+          </Box>
           </Box>
           <Box borderWidth="1px" 
         borderBottomColor={useColorModeValue('gray.200', 'gray.700')}>

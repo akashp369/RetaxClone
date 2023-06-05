@@ -5,7 +5,7 @@ import { Box , Input,Text , Button , Flex, Spacer , Heading , Select} from '@cha
 import { Table,  Thead,Tbody,Tr,Th,Td,TableContainer , InputGroup, InputLeftElement } from '@chakra-ui/react'
 import { Link} from "react-router-dom";
 import {SearchIcon, AddIcon } from '@chakra-ui/icons';
-import dataa from "../../db.json";
+import dataa from "../../Employee.json";
 
 
  function Employee () {

@@ -2,7 +2,7 @@ import './App.css';
 import {useState} from "react"
 import AllRoutes from "./AllRoutes/AllRoutes";
 import Side from './Side'
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Main from "./components/Login/Main";
 import Sidebar from "./Pages/Sidebar";
 import SideContect from "./components/Home/SideContect";
@@ -19,7 +19,11 @@ function App() {
   const update_login=()=>{
     setIsLogin(!isLogin)
   }
+  const navigate=useNavigate();
   if(isLogin==true){
+    if(isLogin==false){
+      navigate('/');
+    }
     return (
       <div className="App">
       <Flex>
