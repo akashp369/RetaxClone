@@ -27,7 +27,7 @@ function App() {
     return (
       <div className="App">
       <Flex>
-      <Box w={"20%"} display={toggel?"none":'block'} >
+      <Box w={"20%"} display={toggel?"none":'block'}>
         <Sidebar  update_login={update_login}/>
       </Box>
       <Box w={!toggel?"82.7%":"100%"}  ml={"0px"}  >

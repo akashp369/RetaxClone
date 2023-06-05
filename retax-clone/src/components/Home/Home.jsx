@@ -5,6 +5,7 @@ import { Box, Button, Flex, Grid, GridItem, Heading, Icon, Select, useColorModeV
 import { BsThreeDots } from "react-icons/bs";
 import Graph from './Graph';
 import { useNavigate } from 'react-router-dom';
+import GaugeChart from 'react-gauge-chart'
 
 export default function Home({update_login, isLogin}) {
   const navigate=useNavigate();
@@ -95,7 +96,7 @@ export default function Home({update_login, isLogin}) {
           <Flex mt={"10px"}
             ml={{ base: 0, md: 0 }} pt={"10px"}
             px={{ base: 4, md: 4 }} justifyContent={"space-between"}>
-              <Box><Heading size={"sm"}>Key Indicators</Heading></Box>
+              <Box><Heading size={"sm"}>Perfomance</Heading></Box>
               <Box>
               <select placeholder='All time' className='select_option' >
               <option value='option1'> All time</option>
@@ -105,7 +106,17 @@ export default function Home({update_login, isLogin}) {
             </select> &nbsp;&nbsp;
             <Icon as={BsThreeDots} />
               </Box>
-          </Flex>   
+          </Flex>  
+          <Box>
+            <br />
+            <br />
+            <GaugeChart id="gauge-chart2" 
+  animate={false} 
+  nrOfLevels={3} 
+  percent={0.97} 
+  needleColor="#345243" textColor='black' />  
+            <p>Total successful all-time returns</p>
+          </Box> 
           </Box>
         </Grid>
     </Box>  
