@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import Home from '../Pages/Home';
 import { Box } from '@chakra-ui/react';
 import { Customer } from '../components/Customer/Customer';
+import {Cases} from '../components/Cases/Cases';
+
 export default function AllRoutes() {
   return (
     <Box 
@@ -15,7 +17,7 @@ export default function AllRoutes() {
       <Route path={'/employee/:emp_id'} element={<Home />} /> {/* shailesh panghate*/}
       <Route path={'/login'} element={<Home />} /> {/* vishwesh captain*/}
       <Route path={'/signup'} element={<Home />} /> {/* vishwesh captain*/}
-      <Route path={'/cases'} element={<Home />} /> {/* sweksha patel*/}
+      <Route path={'/cases'} element={<Cases />} /> {/* sweksha patel*/}
 
     </Routes>
     </Box>
