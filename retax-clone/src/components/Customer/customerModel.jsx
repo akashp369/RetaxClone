@@ -15,8 +15,13 @@ const CustomerModal = ({ isOpen, onClose, customer }) => {
           {/* Access the Customer data using the "Customer" prop */}
           { customer!=null ?
           <>
-            <p>Name: {customer.name} </p> 
             <p>ID: {customer.id}</p>
+            <p>Name: {customer.name} </p> 
+            <p>caseStatus: {customer.caseStatus} </p>
+            <p>family: {customer.family} </p>
+            <p>phone: {customer.phone} </p>
+            <p>email: {customer.email} </p>
+            <p>Dob: {customer.age} </p>     
           </>
           :
           ""}       
