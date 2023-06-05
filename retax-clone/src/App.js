@@ -1,15 +1,13 @@
 import { Customer } from "./components/Customer/Customer";
 import './App.css';
-
+import Employee from "./components/Employee/Employee";
+import { ChakraProvider } from '@chakra-ui/react'
+import AllRoutes from "./AllRoutes/AllRoutes";
 
 function App() {
   return (
-<<<<<<< HEAD
-    <div className="App"> 
-    
-=======
     <div className="App">
->>>>>>> 53f15c2da5870c42f299d2fd8e340f262b9c88df
+      <AllRoutes />
     </div>
   );
 }

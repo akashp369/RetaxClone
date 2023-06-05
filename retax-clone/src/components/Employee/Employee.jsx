@@ -1,81 +1,132 @@
 import React from "react"
 import axios from 'axios';
-import { useEffect } from "react";
+import { useEffect , useState} from "react";
+import { Box , Input,Text , Button , Flex, Spacer , Heading , Select} from '@chakra-ui/react'
+import { Table,  Thead,Tbody,Tr,Th,Td,TableContainer , InputGroup, InputLeftElement } from '@chakra-ui/react'
+import { Link} from "react-router-dom";
+import {SearchIcon, AddIcon } from '@chakra-ui/icons';
+import dataa from "../../db.json";
+
 
  function Employee () {
 
-{ /*    <Route exact path="/" component={EmployeeData} />
-<Route path="/employee/:id" component={EmployeeDetails} />
-  Add this to Route */}
+
+  
+  const  [employeeData , setEmployeeData] = useState(dataa.employeesListData);
 
 
-
-    useEffect(() => {
-                axios.get('')
-            .then(response => {
-              
-                console.log(response.employeeData);
-            })
-            .catch(error => {
-             
-                console.error(error);
-            });
-    })
-
-    const redirectToEmployeeDetails = (employeeId) => {
-
-    }
+    
+    const handleSort = (event) => {
+        let status = event.target.value;
+        
+        const sortedList  = employeeData.filter((employee) => employee.status === status);
+        setEmployeeData(sortedList);
+        // console.log(event.target.value)
+    };
 
     return(
 
-        <div>
-            <h1>Employees</h1>
+        <div >
+           <Flex style={{margin:'30px'}}>
 
-                <div className="sort">
-                    <input placeholder="search by name, email or phone no"></input>
-                </div>
+                <Heading>Employees</Heading>
+                <Spacer />
+                <Button colorScheme='purple' size='md' variant='outline'> <Box style={{margin:"5px"}}><AddIcon></AddIcon></Box>
+                Add An Employee
+                </Button>
+            </Flex>
 
+                <Flex className="sort">
+                    <Box>
+                        <InputGroup>
+                                <InputLeftElement children={<SearchIcon/>} />
+                                <Input placeholder="Search by name, phone or email"/>
+                        </InputGroup>
+                    </Box>
+                    <Box marginLeft="10px" display="flex" columnGap="10px">
+                            {/* sorting */}
+                            <Button backgroundColor="white" border="solid 1px" borderColor="gray">Position</Button> 
+                            <Button backgroundColor="white" border="solid 1px" borderColor="gray">Department</Button>
+                            <Button backgroundColor="white" border="solid 1px" borderColor="gray">Status</Button>
+                            
+                        </Box>
+                    <Spacer />
+                    <Box alignItems="center">Sort by:</Box>
+                    <Box>
+                        
+                        <Select
+                                    placeholder='Select option' size='sm' variant='filled'
+                                    style={{width : "200px", }} 
+                                    onChange={ handleSort}>
 
-                <div className="showData">
+                            <option value='Active'>Active</option>
+                            <option value='Inactive'>Inactive</option>
+                        </Select>
+                    </Box>
+                    
+                </Flex>
 
-                        <table>
-                                <thead>
-                                <tr>
-                                    
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Department</th>
-                                    <th>Status</th>
-                                    <th>Phone no</th>
-                                    <th>Email</th>
-                                </tr>
-                                </thead>
+                <br/> 
 
-                                <tbody>
-                                    <tr>
-                                        <td>shailesh</td>
-                                        <td>Junior </td>
-                                        <td>IT</td>
-                                        <td>Active</td>
-                                        <td>7893443789</td>
-                                        <td>sp@gmail.com</td>
-                                    </tr>
-                                </tbody>
-                                {/* <tbody>
-                                {employees.map((employee) => (
-                                    <div  onClick={() => redirectToEmployeeDetails(employee.id)}>
+                <Box className="showData">
+                <TableContainer>
+                    <Table variant='simple'>
+                                <Thead>
+                                <Tr>
+                                   
+                                    <Th>Name</Th>
+                                    <Th>Age</Th>
+                                    <Th>Position</Th>
+                                    <Th>Department</Th>
+                                    <Th>Status</Th>
+                                    <Th>Phone no</Th>
+                                    <Th>Email</Th>
+                                </Tr>
+                                </Thead>
 
-                                        <tr key={employee.id}>
-                                        <td>{employee.id}</td>
-                                        <td>{employee.name}</td>
-                                        <td>{employee.position}</td>
-                                        </tr>
-                                    </div>
-                                ))}
-                                </tbody> */}
-                        </table>
+                               
+                                <Tbody>
+                                        {
+                                            employeeData.map(employee=>{
+                                                return (
+                                                <Tr alignItems={"center"}>
+                                                         <Flex style={{alignItems:'center'}}>
+                                                              <Link to={`/employee/${employee.id}`}>
+                                                            <img src={employee.img}
+                                                                    alt="profile img" style={{width:'30px' , height:'30px'}}/>
+                                                                </Link>
+                                                                
+                                                             <Link to={`/employee/${employee.id}`}>
+                                                            <Td>{employee.name}</Td>
 
-                </div>
+                                                        </Link>
+                                                        </Flex>
+
+                                                      
+                                                        
+                                                        <Td>{employee.age}</Td>
+                                                        <Td>{employee.positions}</Td>
+                                                        <Td>{employee.department}</Td>
+                                                        <Td style = {{
+                                                            color : employee.status === 'Active' ?
+                                                            'Green':'Blue'}}>{employee.status}</Td>
+                                                        <Td>{employee.PhoneNumber}</Td>
+                                                        <Link to={`/employee/${employee.id}`} style={{marginLeft:'-50px'}}>
+                                                        <Td>{employee.email}</Td>
+                                                        </Link>
+                                                        
+                                                        
+
+                                                    </Tr>
+                                                )
+                                            })
+                                        }
+                                </Tbody>
+                    </Table>
+                       
+
+                    </TableContainer>
+                </Box>
 
 
         </div>
