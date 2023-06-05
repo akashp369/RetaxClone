@@ -41,22 +41,22 @@ function EmployeeDetails(){
                                             <p style={{fontSize:'30px'}}>Departmemt:  {dataEmp.department}</p>
                                         </Box>
                                 </Flex>
-                                    <div>
+                                    <div style={{marginLeft:'8px'}}>
                                         <br /><br />
 
-                                        <div>      
+                                        <div  style={{marginLeft:'10px'}}>      
                                             <Flex>                                 
                                             <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Location_icon_from_Noun_Project.png"
                                             alt="" style={{width:'100px'}}/>
-                                            <p style={{fontSize:'30px' , marginTop:'13px'}}>Location : </p>
+                                            <p style={{fontSize:'30px' , marginTop:'13px', marginLeft:'3px'}}>Location : </p>
                                             <p style={{fontSize:'30px', marginTop:'13px'}}> {dataEmp.Location}</p>
                                             </Flex>
                                          </div>
                                          <div>   
                                          <Flex>                                     
                                             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Phone_icon.png"
-                                            alt=""  style={{width:'80px'}}/>
-                                            <p style={{fontSize:'30px' , marginTop:'13px'}}>Phone No: </p>
+                                            alt=""  style={{width:'70px'}}/>
+                                            <p style={{fontSize:'30px' , marginTop:'13px',  marginLeft:'15px'}}>Phone No: </p>
                                             <p style={{fontSize:'30px' , marginTop:'13px'}}>{dataEmp.PhoneNumber}</p>
                                             </Flex> 
                                          </div>
@@ -64,7 +64,7 @@ function EmployeeDetails(){
                                          <Flex>                                      
                                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9xbVW0hXsvd70H-Tv_T-hNtkrEWjBDnnbRtiTMhZRAw&s"
                                             alt="" style={{width:'100px'}}/>
-                                            <p style={{fontSize:'30px' , marginTop:'13px'}}>Email : </p>
+                                            <p style={{fontSize:'30px' , marginTop:'13px' ,  marginLeft:'3px'}}>Email : </p>
                                             <p style={{fontSize:'30px' , marginTop:'13px'}}>{dataEmp.email}</p>
                                             </Flex> 
                                          </div>
