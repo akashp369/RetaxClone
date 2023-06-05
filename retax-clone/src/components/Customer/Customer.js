@@ -28,7 +28,7 @@ export const Customer=()=>{
       }, []);
     
       const fetchData = async () => {
-        const res = await axios.get(`http://localhost:3000/employees`);
+        const res = await axios.get(`https://retaxcustomerdata.onrender.com/employees`);
         // console.log(res.data);
         setData(res.data);
       };
@@ -107,7 +107,7 @@ export const Customer=()=>{
     };
     
     const handleDelete= async (id) => {
-        await axios.delete(`http://localhost:3000/employees/${id}`);
+        await axios.delete(`https://retaxcustomerdata.onrender.com/employees/${id}`);
         fetchData();
     }
       
@@ -118,7 +118,7 @@ export const Customer=()=>{
             <Box>
                 <Box p={4} fontSize='30px' textAlign={[ 'left']} fontWeight="bold"> Customers</Box>
 
-                <Box display="flex" justifyContent="space-between">
+                <Box display="flex" justifyContent="space-between"   >
                     <Box style={{display:"flex"}} width="70%">
                         <Box width="30%" marginLeft={10}>
                             {/* serach box and some paraMeter */}
