@@ -44,7 +44,7 @@ function EmployeeDetails(){
                                     <div style={{marginLeft:'8px'}}>
                                         <br /><br />
 
-                                        <div >      
+                                        <div  style={{marginLeft:'10px'}}>      
                                             <Flex>                                 
                                             <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Location_icon_from_Noun_Project.png"
                                             alt="" style={{width:'100px'}}/>
