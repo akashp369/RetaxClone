@@ -52,6 +52,7 @@ export default function Sidebar({onClose, isOpen, toggle, update_login}) {
       </Button>
       </Link>
       <Link to={"/calendar"}>
+        
       <Button display={"flex"}  width={"100%"} justifyContent={"left"} cursor="pointer" _hover={{bg: 'teal.300',color: 'white',}} >
           <Icon
             mr="4"
