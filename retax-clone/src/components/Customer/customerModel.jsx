@@ -11,8 +11,6 @@ const CustomerModal = ({ isOpen, onClose, customer }) => {
         <ModalHeader>Customer Details</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          {/* Render Customer details here */}
-          {/* Access the Customer data using the "Customer" prop */}
           { customer!=null ?
           <>
             <p>ID: {customer.id}</p>
@@ -25,7 +23,6 @@ const CustomerModal = ({ isOpen, onClose, customer }) => {
           </>
           :
           ""}       
-          {/* Add other Customer details */}
         </ModalBody>
         <ModalFooter>
           <Button colorScheme="blue" onClick={onClose}>Close</Button>
