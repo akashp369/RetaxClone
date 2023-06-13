@@ -1,15 +1,18 @@
 
 import { Avatar, Box, Flex, HStack, Icon, IconButton, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Text, VStack, useColorModeValue, useDisclosure } from '@chakra-ui/react';
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { FiBell, FiChevronDown, FiMenu } from 'react-icons/fi';
 import { AiOutlineDoubleRight, AiOutlineDoubleLeft } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context api/AuthcontextProvider';
 
-export default function SideContect({onChange ,toggle,update_login}) {
+export default function SideContect({TOggel_theme ,toggle}) {
   const {onOpen} =useDisclosure()
+  const {logout}=useContext(AuthContext)
   const navigate=useNavigate()
+  const [theme, setTheme]=useState(false)
   const user=JSON.parse(localStorage.getItem("user"))
-  console.log(user.newUsername)
+  // console.log(user.newUsername)
   return (
     <Flex
     
@@ -20,12 +23,20 @@ export default function SideContect({onChange ,toggle,update_login}) {
       bg={useColorModeValue('white', 'gray.900')}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-      justifyContent={{ base: 'space-between', md: 'space-between' }} position={"fixed"}
-      w={!toggle?"78.5%":"98%"}
+      justifyContent={{ base: 'space-between', md: 'space-between' }} 
+      // w={!toggle?"78.5%":"98%"}
       >
-      <Box>  
-      <Icon onClick={onChange} display={!toggle?"none":"block"} mr="4" fontSize="25" _groupHover={{color: 'white',}} as={AiOutlineDoubleRight} />
-      <Icon onClick={onChange} display={toggle?"none":"block"} mr="4" fontSize="25" _groupHover={{color: 'white',}} as={AiOutlineDoubleLeft} />
+      <Box  onClick={()=>{
+        TOggel_theme()
+        setTheme(!theme)}}>  
+      {
+        theme?(
+          <Icon  mr="4" fontSize="25" _groupHover={{color: 'white',}} as={AiOutlineDoubleRight} />
+        )
+        :(
+          <Icon  mr="4" fontSize="25" _groupHover={{color: 'white',}} as={AiOutlineDoubleLeft} />
+        )
+      }
       </Box>
       <Box>
       {/* <Text
@@ -61,7 +72,7 @@ export default function SideContect({onChange ,toggle,update_login}) {
                   alignItems="flex-start"
                   spacing="1px"
                   ml="2">
-                  <Text fontSize="sm">{user.newUsername}</Text>
+                  <Text fontSize="sm">{user.username}</Text>
                   <Text fontSize="xs" color="gray.600">
                     Admin
                   </Text>
@@ -79,7 +90,8 @@ export default function SideContect({onChange ,toggle,update_login}) {
               <MenuItem>Billing</MenuItem>
               <MenuDivider />
               <MenuItem onClick={()=>{
-                update_login()
+                localStorage.setItem("auth", JSON.stringify(false))
+                logout()
                 navigate('/')
               }}>Sign out</MenuItem>
             </MenuList>

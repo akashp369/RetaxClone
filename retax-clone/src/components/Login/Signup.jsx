@@ -8,39 +8,33 @@ import {
     Input,
     Text,
     VStack,
+    useToast,
   } from "@chakra-ui/react";
   import logo from "./Images/Retex.png";
   import "./Login.css";
-  
   import { useState } from "react";
   import { Link, useNavigate } from "react-router-dom";
   
-  function Signup({ onFormChange }) {
-    const [newEmail, setNewEmail] = useState("");
-    const [newPassword, setNewPassword] = useState("");
-    const [newUsername, setNewUsername] = useState("");
-  
-    // const navigate = useNavigate()
-    const handleSignup = () => {
-      
-      if (newEmail && newPassword && newUsername) {
-        alert("Account created successfully");
-        localStorage.setItem(
-          "user",
-          JSON.stringify({ newEmail, newPassword, newUsername })
-        );
-        onFormChange("login");
-        // navigate("/login");
-      } else {
-        alert("Please provide email, username, and password");
-      }
-    };
-  
-    const handleLoginLinkClick = (e) => {
+  function Signup({ handleChange }) {
+    const toast=useToast();
+    const [newUsername, setNewUsername] = useState({
+      email: "",
+      password: "",
+      username: "",
+    });
+    const handleSignup=(e)=>{
       e.preventDefault();
-      onFormChange("login");
-    };
-  
+      localStorage.setItem("user", JSON.stringify(newUsername))
+      toast({
+        title: 'Account created.',
+        description: "We've created your account for you.",
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      })
+      handleChange()
+    }
+    console.log(newUsername)
     return (
       <div className="signup-container">
         <Box
@@ -61,23 +55,23 @@ import {
             </VStack>
   
             <FormControl isRequired>
+              <FormLabel>Full Name</FormLabel>
+              <Input
+                type="text"
+                variant="filled"
+                bg={"purple.50"}
+                value={newUsername.username}
+                onChange={(e) => setNewUsername({...newUsername, username:e.target.value})}
+              />
+            </FormControl>
+            <FormControl isRequired>
               <FormLabel>E-mail Address</FormLabel>
               <Input
                 type="email"
                 variant="filled"
                 bg={"purple.50"}
-                value={newEmail}
-                onChange={(e) => setNewEmail(e.target.value)}
-              />
-            </FormControl>
-            <FormControl isRequired>
-              <FormLabel>Username</FormLabel>
-              <Input
-                type="text"
-                variant="filled"
-                bg={"purple.50"}
-                value={newUsername}
-                onChange={(e) => setNewUsername(e.target.value)}
+                value={newUsername.email}
+                onChange={(e) => setNewUsername({...newUsername, email:e.target.value})}
               />
             </FormControl>
             <FormControl isRequired>
@@ -86,8 +80,8 @@ import {
                 type="password"
                 variant="filled"
                 bg={"purple.50"}
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
+                value={newUsername.password}
+                onChange={(e) => setNewUsername({...newUsername, password:e.target.value})}
               />
             </FormControl>
   
@@ -102,7 +96,7 @@ import {
   
             <Text>
               Already on Retax?
-              <Link color="teal.500" onClick={handleLoginLinkClick}>
+              <Link color="teal.500" onClick={handleChange}>
                 LOG IN
               </Link>
             </Text>

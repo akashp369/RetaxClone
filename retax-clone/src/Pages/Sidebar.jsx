@@ -1,5 +1,5 @@
 import { Box, Button, Flex, Heading, Icon, Image, Input, InputGroup, InputLeftAddon, InputLeftElement, useColorModeValue} from '@chakra-ui/react'
-import React from 'react'
+import React, { useContext } from 'react'
 import './Sidebar.css'
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -19,10 +19,12 @@ import { MdLeaderboard } from "react-icons/md";
 import { HiIdentification } from "react-icons/hi";
 import { GrSearch } from "react-icons/gr";
 import { SearchIcon } from '@chakra-ui/icons';
+import { AuthContext } from '../Context api/AuthcontextProvider';
 
  
 export default function Sidebar({onClose, isOpen, toggle, update_login}) {
     const navigate=useNavigate()
+    const {logout}= useContext(AuthContext)
   return (
     <Flex className='shadow' direction={"column"} justifyContent={"space-between"} w="19%"  h={"100vh"} bg={useColorModeValue('gray.100', 'gray.900')} position={"fixed"}     mb={"10px"} textAlign={"left"}  >  
     <Box className='shadow' p={"20px"} h={"75%"}   >
@@ -39,13 +41,13 @@ export default function Sidebar({onClose, isOpen, toggle, update_login}) {
       </InputGroup>
     </Box >
     <Box  mr={"0px"}  >
-      <Link to={"/dashboard"}>
+      <Link to={"/"}>
       <Button display={"flex"}  width={"100%"} justifyContent={"left"} cursor="pointer" _hover={{bg: 'teal.300',color: 'white',}} >
          <Icon mr="4" fontSize="16" _groupHover={{color: 'white',}} as={FiHome} />
           <p>Dashboard</p>
       </Button>
       </Link>
-      <Link to={"/customer"}>
+      <Link to={"/calendar"}>
       <Button display={"flex"}  width={"100%"} justifyContent={"left"} cursor="pointer" _hover={{bg: 'teal.300',color: 'white',}} >
         <Icon mr="4" fontSize="16" _groupHover={{color: 'white',}} as={CgCheckO} />  
           <p>Tasks</p>
@@ -165,8 +167,8 @@ export default function Sidebar({onClose, isOpen, toggle, update_login}) {
         bg: 'teal.300',
         color: 'white',
       }} onClick={()=>{
-        update_login()
-        navigate("/")
+        logout()
+        navigate('/')
       }}>
          <Icon
             mr="4"
