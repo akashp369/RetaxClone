@@ -35,7 +35,7 @@ import dataa from "../../Employee.json";
 
     return(
 
-        <div style={{margin:'10px' , padding:'10px'}}>
+        <Box style={{margin:'10px' , padding:'10px'}}>
                 <Flex style={{margin:'30px'}}>
                             <Heading>Employees</Heading>
                             <Spacer />
@@ -132,7 +132,7 @@ import dataa from "../../Employee.json";
                 </Box>
 
 
-        </div>
+        </Box>
     );
     
 }

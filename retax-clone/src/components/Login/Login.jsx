@@ -1,4 +1,8 @@
 import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
   Box,
   Button,
   Checkbox,
@@ -11,43 +15,82 @@ import {
   Link,
   Text,
   VStack,
+  useToast,
 } from "@chakra-ui/react";
 import "./Login.css";
 
 import logo from "./Images/Retex.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context api/AuthcontextProvider";
 
-function Login({ onFormChange, handleChange, update_login }) {
+function Login({handleChange}) {
+  const {login} =useContext(AuthContext)
+  const toast=useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const userData = localStorage.getItem("user");
-
+    const userData = JSON.parse(localStorage.getItem("user"));
+    // const navigate=useNavigate()
     // console.log(userData);
     if(userData){
-      const findData = JSON.parse(userData)
-      console.log(findData);
-      if(findData.newEmail === email && findData.newPassword === password){
-        alert("Welcome to Retax");
-        update_login();
-        navigate("/dashboard")
-        handleChange()
+      if(userData.email === email && userData.password === password){
+        localStorage.setItem("auth", JSON.stringify(true))
+        toast({
+          title: 'Welcome to Retax.',
+          status: 'success',
+          duration: 2000,
+          isClosable: true,
+        })
+        login()
+        // navigate('/')
+        
+      }else if (userData.email !=email && userData.password!=password){
+        toast({
+          title: 'Please Enter Email & Password',
+          status: 'error',
+          position:'top',
+          duration: 2000,
+          isClosable: true,
+        })
+      }
+      else if(userData.email != email){
+        toast({
+          title: 'Please Enter Correct Email',
+          status: 'error',
+          position:'top',
+          duration: 2000,
+          isClosable: true,
+        })
+      }else if(userData.password != password){
+        toast({
+          title: 'Please Enter Correct Password',
+          status: 'error',
+          position:'top',
+          duration: 2000,
+          isClosable: true,
+        })
       }
     }
     else{
-      alert("Create an account");
-      onFormChange("signup");
+      toast({
+        title: 'Please Create Account First',
+        status: 'warning',
+        position:'top',
+        duration: 2000,
+        isClosable: true,
+      })
+      handleChange()
     }
   };
 
-  const handleSignupLinkClick = (e) => {
-    e.preventDefault();
-    onFormChange("signup");
-  };
+  // const handleSignupLinkClick = (e) => {
+  //   e.preventDefault();
+  //   onFormChange("signup");
+  // };
 
 
   return (
@@ -103,7 +146,7 @@ function Login({ onFormChange, handleChange, update_login }) {
         </Button>
         <Text>
           New on Retax?
-          <Link color="teal.500" onClick={handleSignupLinkClick}>
+          <Link color="teal.500" onClick={handleChange}>
             SIGN UP
           </Link>
         </Text>
